@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Portal Hub</title>
+    <style>
+        :root {
+            --bg: #0b0f19;
+            --surface: #111827;
+            --surface-hover: #1f2937;
+            --accent: #3b82f6;
+            --text: #f9fafb;
+            --text-dim: #9ca3af;
+            --border: #374151;
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
+        }
+        header {
+            background-color: var(--surface);
+            padding: 0.75rem 1.25rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+            height: 56px;
+        }
+        h1 { margin: 0; font-size: 1.1rem; color: var(--accent); font-weight: 700; letter-spacing: 0.5px; }
+        .main-container {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+        sidebar {
+            width: 280px;
+            background-color: var(--surface);
+            border-right: 1px solid var(--border);
+            padding: 0.75rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+            overflow-y: auto;
+        }
+        sidebar::-webkit-scrollbar { width: 6px; }
+        sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+        .category-title {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: var(--text-dim);
+            margin: 0.8rem 0 0.25rem 0.5rem;
+            font-weight: 700;
+        }
+        .game-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-dim);
+            padding: 0.65rem 0.85rem;
+            text-align: left;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.15s ease;
+            width: 100%;
+        }
+        .game-btn:hover {
+            background-color: var(--surface-hover);
+            color: var(--text);
+        }
+        .game-btn.active {
+            background-color: var(--accent);
+            color: #ffffff;
+        }
+        .content-pane {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: #000000;
+            position: relative;
+        }
+        iframe {
+            flex: 1;
+            border: none;
+            width: 100%;
+            height: 100%;
+        }
+        .welcome-screen {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            color: var(--text-dim);
+            text-align: center;
+            padding: 2rem;
+            background: var(--bg);
+        }
+        .welcome-screen h2 { color: var(--text); margin-bottom: 0.5rem; font-size: 1.4rem; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>STUDY YARD MODULE 2.0</h1>
+        <span style="font-size: 0.75rem; color: var(--text-dim); font-family: monospace;">SECURE ENDPOINT CONNECTED</span>
+    </header>
+    <div class="main-container">
+        <sidebar>
+            <div class="category-title">fnf</div>
+            <button class="game-btn" onclick="loadModule('https://cdn.jsdelivr.net/gh/3kh0/3kh0-assets@main/fnf/index.html', this)">Friday Night Funkin'</button>
+
+            <div class="category-title">Simulation & Strategy</div>
+            <button class="game-btn" onclick="loadModule('https://cdn.jsdelivr.net/gh/genie-r/assets-v2@main/rb/index.html', this)">Retro Bowl</button>
+            <button class="game-btn" onclick="loadModule('https://cdn.jsdelivr.net/gh/3kh0/3kh0-assets@main/cookie-clicker/index.html', this)">Cookie Clicker</button>
+            <button class="game-btn" onclick="loadModule('https://cdn.jsdelivr.net/gh/3kh0/3kh0-assets@main/bitlife/index.html', this)">BitLife</button>
+
+            <div class="category-title">Arcade & Action</div>
+            <button class="game-btn" onclick="loadModule('https://cdn.jsdelivr.net/gh/frvr/2048-cdn@master/index.html', this)">2048</button>
+            <button class="game-btn" onclick="loadModule('https://cdn.jsdelivr.net/gh/bubbls/slope@main/index.html', this)">Slope</button>
+            <button class="game-btn" onclick="loadModule('https://cdn.jsdelivr.net/gh/topixmc/moto-x3m@main/index.html', this)">Moto X3M</button>
+            <button class="game-btn" onclick="loadModule('https://cdn.jsdelivr.net/gh/3kh0/3kh0-assets@main/tunnel-rush/index.html', this)">Tunnel Rush</button>
+            <button class="game-btn" onclick="loadModule('https://cdn.jsdelivr.net/gh/genie-r/assets-v2@main/sk/index.html', this)">Smash Karts</button>
+            <button class="game-btn" onclick="loadModule('https://cdn.jsdelivr.net/gh/3kh0/3kh0-assets@main/crossy-road/index.html', this)">Crossy Road</button>
+            <button class="game-btn" onclick="loadModule('https://cdn.jsdelivr.net/gh/3kh0/3kh0-assets@main/stickman-hook/index.html', this)">Stickman Hook</button>
+
+            <div class="category-title">Classics & Puzzle</div>
+            <button class="game-btn" onclick="loadModule('https://cdn.jsdelivr.net/gh/3kh0/3kh0-assets@main/paperio2/index.html', this)">Paper.io 2</button>
+            <button class="game-btn" onclick="loadModule('https://cdn.jsdelivr.net/gh/3kh0/3kh0-assets@main/ovo/index.html', this)">OvO</button>
+            <button class="game-btn" onclick="loadModule('https://cdn.jsdelivr.net/gh/3kh0/3kh0-assets@main/coreball/index.html', this)">Coreball</button>
+        </sidebar>
+        <div class="content-pane" id="pane">
+            <div class="welcome-screen" id="welcome">
+                <h2>Select a module from the sidebar</h2>
+                <p>Ready whenever you are, Nono.</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        function loadModule(url, btn) {
+            document.querySelectorAll('.game-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            let pane = document.getElementById('pane');
+            pane.innerHTML = `<iframe src="${url}" sandbox="allow-scripts allow-same-origin allow-pointer-lock allow-forms allow-popups" style="background:#000000;"></iframe>`;
+        }
+    </script>
+</body>
+</html>
